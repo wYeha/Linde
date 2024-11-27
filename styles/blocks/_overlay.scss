@@ -1,0 +1,42 @@
+.overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 100vh;
+	background-color: var(--color-accent-secondary);
+	padding: 20px;
+	z-index: 1;
+	@include flex-center;
+	@include transition;
+
+
+	&--inactive {
+		right: -9999px;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 30px;
+	}
+
+	&__item {}
+
+	&__dropdown {
+		display: flex;
+		align-items: center;
+		column-gap: 4px;
+	}
+
+
+	&__link {
+		color: var(--color-dark);
+		font-size: 20px;
+
+		@include hover {
+			color: var(--color-white);
+		}
+	}
+}

@@ -1,0 +1,17 @@
+.button {
+	@include reset-button;
+	height: 40px;
+	font-weight: 800;
+	font-size: 16px;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+
+	&--accent {
+		color: var(--color-white);
+		background-color: var(--color-accent-primary);
+
+		@include hover {
+			background-color: var(--color-accent-secondary);
+		}
+	}
+}

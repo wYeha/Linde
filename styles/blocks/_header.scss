@@ -1,0 +1,138 @@
+.header {
+	margin-bottom: 37px;
+
+	&__inner {
+		padding-block: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: 10px;
+		position: relative;
+		@include border-bottom;
+	}
+
+	&__logo img {
+		@include tablet {
+			height: 45px;
+		}
+	}
+
+	&__menu {}
+
+	&__list {
+		display: flex;
+		gap: 30px;
+
+		@include desktop {
+			gap: 16px;
+		}
+	}
+
+	&__item {}
+
+	&__dropdown {
+		display: flex;
+		align-items: center;
+		column-gap: 4px;
+	}
+
+
+	&__link {
+		color: var(--color-dark);
+		display: flex;
+		align-items: center;
+		line-height: 55px;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: 0;
+			left: 50%;
+			top: 75%;
+			transform: translateX(-50%);
+			height: 2px;
+			background-color: var(--color-accent-secondary);
+			transition: var(--transition-duration);
+		}
+
+		@include hover {
+
+			&::after {
+				width: 100%;
+			}
+		}
+	}
+
+	&__box {
+		display: flex;
+		column-gap: 24px;
+		align-items: center;
+
+		@include mobile {
+			column-gap: 12px;
+		}
+	}
+
+	&__form {
+		position: relative;
+	}
+
+	&__form-label {
+		position: absolute;
+		left: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: text;
+	}
+
+	&__form-image {}
+
+	&__seacrh {
+		font-size: 14px;
+		font-weight: 200;
+		height: 24px;
+		border-radius: var(--border-radius);
+		background-color: var(--color-grey-bright);
+		padding-left: 34px;
+		padding-right: 10px;
+		max-width: 210px;
+
+		&:focus-visible {
+			border: 1px solid var(--color-accent-secondary);
+		}
+
+		&::placeholder {
+			color: var(--color-grey);
+		}
+	}
+
+	&__icons {
+		display: flex;
+		column-gap: 12px;
+
+		@include mobile {
+			column-gap: 6px;
+		}
+	}
+
+	&__icon {
+		@include square(30px);
+		@include flex-center;
+		border-radius: var(--border-radius-header);
+
+		@include hover {
+			background-color: var(--color-accent-secondary);
+
+			.header {
+				&__icon-svg {
+					color: var(--color-white);
+				}
+			}
+		}
+	}
+
+	&__icon-svg {
+		color: var(--color-accent-secondary);
+	}
+}

@@ -1,0 +1,35 @@
+body>* {
+	font-family: var(--font-family-primary);
+}
+
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+h2 {
+	font-family: var(--font-family-secondary);
+	font-size: 43px;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+	@include transition;
+}
+
+a,
+svg {
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+input[type="search"] {
+	outline: none;
+	border: none;
+}

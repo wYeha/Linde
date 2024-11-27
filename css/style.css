@@ -1,0 +1,613 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+	 Убираем внутренние отступы слева тегам списков,
+	 у которых есть атрибут class
+	*/
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+	 Убираем внешние отступы body и двум другим тегам,
+	 у которых есть атрибут class
+	*/
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+	 Убираем внешние отступы вертикали нужным тегам,
+	 у которых есть атрибут class
+	*/
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+	 Убираем стандартный маркер маркированному списку,
+	 у которого есть атрибут class
+	*/
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+	 Обнуляем вертикальные внешние отступы параграфа,
+	 объявляем локальную переменную для внешнего отступа вниз,
+	 чтобы избежать взаимодействие с более сложным селектором
+	*/
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+	 Внешний отступ вниз для параграфа без атрибута class,
+	 который расположен не последним среди своих соседних элементов
+	*/
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+	 Упрощаем работу с изображениями
+	*/
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+	 Наследуем свойства шрифт для полей ввода
+	*/
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+  	 Пригодится в большинстве ситуаций
+  	 (когда, например, нужно будет "прижать" футер к низу сайта)
+  	*/
+  height: 100%;
+}
+
+/**
+	 Плавный скролл
+	*/
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+  	 Пригодится в большинстве ситуаций
+  	 (когда, например, нужно будет "прижать" футер к низу сайта)
+  	*/
+  min-height: 100%;
+  /**
+  	 Унифицированный интерлиньяж
+  	*/
+  line-height: 1.5;
+}
+
+/**
+	 Приводим к единому цвету svg-элементы
+	*/
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+	 Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+	*/
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+	 Удаляем все анимации и переходы для людей,
+	 которые предпочитают их не использовать
+	*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-ExtraBold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kind";
+  src: url("../fonts/KindAvenueDemo.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --container-width: 1200px;
+  --container-padding-x: 20px;
+  --section-padding-y: 168px;
+  --grid-gap-large: 24px;
+  --color-accent-primary: #D05B19;
+  --color-accent-secondary: #EC8D59;
+  --color-dark: #000000;
+  --color-dark-alt: #1F1F1F;
+  --color-white: #FFFFFF;
+  --color-grey: rgba(73, 59, 50, 0.4);
+  --color-grey-transparent: rgba(96, 96, 96, 0.6);
+  --color-grey-light: #EDEDED;
+  --color-grey-bright: #F2F2F2;
+  --border-bottom: 1px solid var(--color-grey);
+  --border-radius: 24px;
+  --border-radius-header: 8px;
+  --font-family-primary: "Outfit";
+  --font-family-secondary: "Kind";
+  --transition-duration: .3s;
+}
+
+body > * {
+  font-family: var(--font-family-primary);
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+h2 {
+  font-family: var(--font-family-secondary);
+  font-size: 43px;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition: var(--transition-duration);
+  -webkit-transition: var(--transition-duration);
+  -o-transition: var(--transition-duration);
+  -moz-transition: var(--transition-duration);
+}
+
+a,
+svg {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input[type=search] {
+  outline: none;
+  border: none;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(100%) !important;
+          clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .visible-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .visible-tablet {
+    display: none !important;
+  }
+}
+
+.header {
+  margin-bottom: 37px;
+}
+.header__inner {
+  padding-block: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  position: relative;
+  position: relative;
+}
+.header__inner::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  max-width: var(--container-width);
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-grey);
+}
+@media (max-width: 1023px) {
+  .header__logo img {
+    height: 45px;
+  }
+}
+.header__list {
+  display: flex;
+  gap: 30px;
+}
+@media (max-width: 1199px) {
+  .header__list {
+    gap: 16px;
+  }
+}
+.header__dropdown {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 4px;
+       column-gap: 4px;
+}
+.header__link {
+  color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  line-height: 55px;
+  position: relative;
+}
+.header__link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  left: 50%;
+  top: 75%;
+  transform: translateX(-50%);
+  height: 2px;
+  background-color: var(--color-accent-secondary);
+  transition: var(--transition-duration);
+}
+@media (hover: hover) {
+  .header__link:hover::after {
+    width: 100%;
+  }
+}
+@media (hover: none) {
+  .header__link:active::after {
+    width: 100%;
+  }
+}
+.header__box {
+  display: flex;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .header__box {
+    -moz-column-gap: 12px;
+         column-gap: 12px;
+  }
+}
+.header__form {
+  position: relative;
+}
+.header__form-label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: text;
+}
+.header__seacrh {
+  font-size: 14px;
+  font-weight: 200;
+  height: 24px;
+  border-radius: var(--border-radius);
+  background-color: var(--color-grey-bright);
+  padding-left: 34px;
+  padding-right: 10px;
+  max-width: 210px;
+}
+.header__seacrh:focus-visible {
+  border: 1px solid var(--color-accent-secondary);
+}
+.header__seacrh::-moz-placeholder {
+  color: var(--color-grey);
+}
+.header__seacrh::placeholder {
+  color: var(--color-grey);
+}
+.header__icons {
+  display: flex;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+}
+@media (max-width: 767px) {
+  .header__icons {
+    -moz-column-gap: 6px;
+         column-gap: 6px;
+  }
+}
+.header__icon {
+  width: 30px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-header);
+}
+@media (hover: hover) {
+  .header__icon:hover {
+    background-color: var(--color-accent-secondary);
+  }
+  .header__icon:hover .header__icon-svg {
+    color: var(--color-white);
+  }
+}
+@media (hover: none) {
+  .header__icon:active {
+    background-color: var(--color-accent-secondary);
+  }
+  .header__icon:active .header__icon-svg {
+    color: var(--color-white);
+  }
+}
+.header__icon-svg {
+  color: var(--color-accent-secondary);
+}
+
+.button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  font-weight: 800;
+  font-size: 16px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.button--accent {
+  color: var(--color-white);
+  background-color: var(--color-accent-primary);
+}
+@media (hover: hover) {
+  .button--accent:hover {
+    background-color: var(--color-accent-secondary);
+  }
+}
+@media (hover: none) {
+  .button--accent:active {
+    background-color: var(--color-accent-secondary);
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: relative;
+}
+.intro__title {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  font-weight: 300;
+  font-size: 78px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 54px;
+  padding-top: 104px;
+  padding-bottom: 135px;
+  transform: translateX(-7px);
+  font-size: clamp(52px, 5.4166666667vw, 78px);
+}
+.intro__button {
+  padding-inline: 30px;
+}
+.intro__image {
+  position: absolute;
+  height: 567px;
+  right: 0;
+  top: 0;
+}
+
+.burger {
+  width: 32px;
+  aspect-ratio: 1;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-header);
+  position: relative;
+  z-index: 10;
+}
+@media (hover: hover) {
+  .burger:hover {
+    background-color: var(--color-accent-secondary);
+  }
+  .burger:hover .burger__line {
+    background-color: var(--color-white);
+    box-shadow: 0 -7px var(--color-white), 0 7px var(--color-white);
+  }
+}
+@media (hover: none) {
+  .burger:active {
+    background-color: var(--color-accent-secondary);
+  }
+  .burger:active .burger__line {
+    background-color: var(--color-white);
+    box-shadow: 0 -7px var(--color-white), 0 7px var(--color-white);
+  }
+}
+.burger__line {
+  display: block;
+  width: 60%;
+  height: 2px;
+  background-color: var(--color-accent-secondary);
+  box-shadow: 0 -7px 0 var(--color-accent-secondary), 0 7px var(--color-accent-secondary);
+  transition: var(--transition-duration);
+  -webkit-transition: var(--transition-duration);
+  -o-transition: var(--transition-duration);
+  -moz-transition: var(--transition-duration);
+}
+.burger--close {
+  background-color: var(--color-white);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: var(--color-accent-secondary);
+  padding: 20px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition-duration);
+  -webkit-transition: var(--transition-duration);
+  -o-transition: var(--transition-duration);
+  -moz-transition: var(--transition-duration);
+}
+.overlay--inactive {
+  right: -9999px;
+}
+.overlay__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+}
+.overlay__dropdown {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 4px;
+       column-gap: 4px;
+}
+.overlay__link {
+  color: var(--color-dark);
+  font-size: 20px;
+}
+@media (hover: hover) {
+  .overlay__link:hover {
+    color: var(--color-white);
+  }
+}
+@media (hover: none) {
+  .overlay__link:active {
+    color: var(--color-white);
+  }
+}/*# sourceMappingURL=style.css.map */

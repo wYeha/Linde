@@ -1,0 +1,36 @@
+.burger {
+	@include square(32px);
+	@include reset-button;
+	@include flex-center;
+	border-radius: var(--border-radius-header);
+	position: relative;
+	z-index: 10;
+
+
+	@include hover {
+		background-color: var(--color-accent-secondary);
+
+		.burger {
+			&__line {
+				background-color: var(--color-white);
+				box-shadow: 0 -7px var(--color-white), 0 7px var(--color-white);
+			}
+		}
+	}
+
+
+	&__line {
+		display: block;
+		width: 60%;
+		height: 2px;
+		background-color: var(--color-accent-secondary);
+		box-shadow: 0 -7px 0 var(--color-accent-secondary), 0 7px var(--color-accent-secondary);
+		@include transition;
+	}
+
+	&--close {
+		background-color: var(--color-white);
+
+		@include hover {}
+	}
+}
