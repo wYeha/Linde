@@ -6,12 +6,54 @@
 	border-radius: var(--border-radius);
 	cursor: pointer;
 
+	@include tablet {
+		height: 36px;
+	}
+
 	&--accent {
 		color: var(--color-white);
 		background-color: var(--color-accent-primary);
+		border: 2px solid var(--color-accent-primary);
 
 		@include hover {
-			background-color: var(--color-accent-secondary);
+			background-color: transparent;
+			color: var(--color-dark);
 		}
+	}
+
+	&--w-arrow {
+		display: flex;
+		align-items: center;
+		column-gap: 10px;
+		background-color: var(--color-white);
+		border: 2px solid transparent;
+
+		@include hover {
+			background-color: transparent;
+			color: var(--color-white);
+			border-color: var(--color-white);
+
+			.button {
+				&__view-box {
+					background-color: var(--color-white);
+
+					& svg {
+						color: var(--color-accent-primary);
+					}
+				}
+			}
+		}
+	}
+
+	&__view-box {
+		background-color: var(--color-accent-primary);
+		border-radius: var(--border-radius);
+		@include square(28px);
+		@include flex-center;
+		@include transition;
+	}
+
+	&__view-box svg {
+		color: var(--color-white);
 	}
 }

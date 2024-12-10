@@ -1,0 +1,79 @@
+.combinations {
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+		gap: var(--grid-gap-large);
+
+		@include mobile {
+			display: flex;
+			flex-wrap: nowrap;
+			gap: 16px;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			scroll-snap-type: x mandatory;
+			margin-inline: calc(var(--container-padding-x) * -1);
+			padding-inline: var(--container-padding-x);
+			padding-block-start: 20px;
+		}
+	}
+
+	&__item {
+		position: relative;
+		scroll-snap-align: center;
+
+		& img {
+			object-fit: cover;
+			width: 100%;
+		}
+
+		@include mobile {
+			flex: 1 0 300px;
+		}
+	}
+
+	&__item--main {
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		row-gap: var(--grid-gap-large);
+		align-items: flex-start;
+		background-color: var(--color-accent-primary);
+		padding: 20px;
+	}
+
+	&__text-box {
+		display: flex;
+		flex-direction: column;
+		row-gap: 26px;
+		max-width: 400px;
+
+		@include mobile {
+			row-gap: 0;
+		}
+	}
+
+	&__title,
+	&__text {
+		color: var(--color-white);
+	}
+
+	&__title {
+		line-height: 1.1;
+		text-transform: capitalize;
+	}
+
+	&__text {
+		font-weight: 300;
+	}
+
+	&__button {
+		padding-inline: 16px 6px;
+		text-transform: uppercase;
+
+		@include mobile {
+			margin-left: auto;
+		}
+	}
+}

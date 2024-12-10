@@ -41,14 +41,15 @@
 			</nav>
 
 			<div class="header__box">
-				<form class="header__form" action="search">
-					<label class="header__form-label" for="seacrh">
-						<img class="header__form-image" src="./images/search.svg" alt="seacrh" width="18" height="18"
-							loading="lazy">
-					</label>
-					<input class="header__seacrh" type="search" placeholder="Search..." id="seacrh" aria-label="Поиск по сайту">
-				</form>
-
+				<seacrh role="search">
+					<form class="header__form" action="search">
+						<label class="header__form-label" for="seacrh">
+							<img class="header__form-image" src="./images/search.svg" alt="seacrh" width="18" height="18"
+								loading="lazy">
+						</label>
+						<input class="header__seacrh" type="search" placeholder="Search..." id="seacrh" aria-label="Поиск по сайту">
+					</form>
+				</seacrh>
 				<div class="header__icons">
 					<a href="#!" class="header__icon">
 						<svg class="header__icon-svg" width="18" height="19" viewBox="0 0 18 19" fill="none"
@@ -79,11 +80,11 @@
 					</a>
 				</div>
 
-				<button class="burger visible-tablet" id="burger">
+				<button class="burger visible-tablet" id="burger" type="button">
 					<span class="burger__line"></span>
 				</button>
 
-				<aside class="header__overlay overlay overlay--inactive" id="overlay">
+				<div class="header__overlay overlay overlay--inactive" id="overlay">
 					<ul class="overlay__list">
 						<li class="overlay__item">
 							<a href="#!" class="overlay__link">New In</a>
@@ -106,32 +107,244 @@
 							</a>
 						</li>
 					</ul>
-				</aside>
+				</div>
 			</div>
 		</div>
 	</header>
 
+	<section class="intro container">
+		<div class="intro__inner intro__inner--left">
+			<h1 class="intro__title">
+				<span class="intro__line">Yarns</span>
+				<span class="intro__line">Patterns</span>
+				<span class="intro__line">Hooks & Needles</span>
+				<span class="intro__line">And more</span>
+			</h1>
+			<button class="intro__button button button--accent" type="button">SHOP NOW</button>
+		</div>
+		<div class="intro__inner intro__inner--right">
+			<h3 class="intro__subtitle">Explore our excellent knitting and crochet patterns.</h3>
+			<button class="intro__button-view button button--w-arrow">
+				VIEW ALL
+				<div class="button__view-box">
+					<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6 14H21M21 14L13.5 21M21 14L13.5 7" stroke="white" stroke-width="2" />
+					</svg>
+				</div>
+			</button>
+		</div>
+	</section>
+
+	<section class="slider container">
+		<h2 class="slider__section-title">Best Sellers</h2>
+		<div class="slider__decorated"></div>
+		<div class="slider__controls">
+			<button id="sliderPrev">
+				<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="17" cy="17" r="17" fill="#1F1F1F" />
+					<path d="M19.5 11.5L13.5 17.5L19.5 23.5" stroke="white" stroke-width="2" />
+				</svg>
+
+			</button>
+			<button id="sliderNext">
+				<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="17" cy="17" r="17" transform="rotate(-180 17 17)" fill="#1F1F1F" />
+					<path d="M14.5 22.5L20.5 16.5L14.5 10.5" stroke="white" stroke-width="2" />
+				</svg>
+
+			</button>
+		</div>
+		<div class="slider__container">
+			<div class="slider__slide">
+				<article class="slider__inner">
+					<img class="slider__image" src="./images/slider/best-sellers/image1.jpg" alt="" width="344" height="350"
+						loading="lazy">
+					<div class="slider__info">
+						<h4 class="slider__title">
+							<a href="#">drops nepal</a>
+							<span>65% Wool / 35% Alpaca</span>
+						</h4>
+						<span class="slider__price">$1.70</span>
+					</div>
+				</article>
+			</div>
+			<div class="slider__slide">
+				<article class="slider__inner">
+					<img class="slider__image" src="./images/slider/best-sellers/image2.jpg" alt="" width="344" height="350"
+						loading="lazy">
+					<div class="slider__info">
+						<h4 class="slider__title">
+							<a href="#">DROPS basic</a>
+							<span>Fixed Circular Needles 2 - 10 mm</span>
+						</h4>
+						<span class="slider__price">from $2.30</span>
+					</div>
+				</article>
+			</div>
+			<div class="slider__slide">
+				<article class="slider__inner">
+					<img class="slider__image" src="./images/slider/best-sellers/image3.jpg" alt="" width="344" height="350"
+						loading="lazy">
+					<div class="slider__info">
+						<h4 class="slider__title">
+							<a href="#">DROPS Pro Classic</a>
+							<span>Fixed Circular Needles 2 - 10 mm</span>
+						</h4>
+						<span class="slider__price">$1.70</span>
+					</div>
+				</article>
+			</div>
+			<div class="slider__slide">
+				<article class="slider__inner">
+					<img class="slider__image" src="./images/slider/best-sellers/image4.jpg" alt="" width="344" height="350"
+						loading="lazy">
+					<div class="slider__info">
+						<h4 class="slider__title">
+							<a href="#">DROPS Nord</a>
+							<span>45% alpaca / 30% polyamide / 25% wool</span>
+						</h4>
+						<span class="slider__price">$1.70</span>
+					</div>
+				</article>
+			</div>
+			<div class="slider__slide">
+				<article class="slider__inner">
+					<img class="slider__image" src="./images/slider/best-sellers/image5.jpg" alt="" width="344" height="350"
+						loading="lazy">
+					<div class="slider__info">
+						<h4 class="slider__title">
+							<a href="#">drops nepal</a>
+							<span>65% Wool / 35% Alpaca</span>
+						</h4>
+						<span class="slider__price">$1.70</span>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="categories container">
+		<h2 class="categories__title visually-hidden">Categories</h2>
+		<ul class="categories__list">
+			<li class="categories__item">
+				<div class="categories__text-box">
+					<h3 class="categories__item-title">
+						<a href="#">patterns</a>
+					</h3>
+					<p class="categories__item-description">The destination for inspirations</p>
+				</div>
+				<img src="./images/categories/patterns.jpg" alt="" width="83" height="82" loading="lazy">
+			</li>
+			<li class="categories__item">
+				<div class="categories__text-box">
+					<h3 class="categories__item-title">
+						<a href="#">accessories</a>
+					</h3>
+					<p class="categories__item-description">Blocks, cleaning and more</p>
+				</div>
+				<img src="./images/categories/accessories.jpg" alt="" width="83" height="82" loading="lazy">
+			</li>
+			<li class="categories__item">
+				<div class="categories__text-box">
+					<h3 class="categories__item-title">
+						<a href="#">yarn</a>
+					</h3>
+					<p class="categories__item-description">A huge selection of colours, weights and brands</p>
+				</div>
+				<img src="./images/categories/yarn.jpg" alt="" width="83" height="82" loading="lazy">
+			</li>
+			<li class="categories__item">
+				<div class="categories__text-box">
+					<h3 class="categories__item-title">
+						<a href="#">knitting</a>
+					</h3>
+					<p class="categories__item-description">Needles and other accessories</p>
+				</div>
+				<img src="./images/categories/knitting.jpg" alt="" width="83" height="82" loading="lazy">
+			</li>
+			<li class="categories__item">
+				<div class="categories__text-box">
+					<h3 class="categories__item-title">
+						<a href="#">crochet</a>
+					</h3>
+					<p class="categories__item-description">Crochet hooks and other accessories</p>
+				</div>
+				<img src="./images/categories/crochet.jpg" alt="" width="83" height="82" loading="lazy">
+			</li>
+			<li class="categories__item">
+				<div class="categories__text-box">
+					<h3 class="categories__item-title">
+						<a href="#">painting</a>
+					</h3>
+					<p class="categories__item-description">A huge selection of pencils, markers and more</p>
+				</div>
+				<img src="./images/categories/painting.jpg" alt="" width="83" height="82" loading="lazy">
+			</li>
+		</ul>
+	</section>
+
+	<section class="combinations container">
+		<ul class="combinations__list">
+			<div class="combinations__item combinations__item--main">
+				<div class="combinations__text-box">
+					<h2 class="combinations__title">Yarn combinations</h2>
+					<p class="combinations__text">Many of our yarns can be combined together to get a different tension, texture
+						or
+						feel. Here's a few combination ideas to inspire you.</p>
+				</div>
+				<button class="combinations__button button button--w-arrow" type="button">
+					go to catalogue
+					<div class="button__view-box">
+						<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 14H21M21 14L13.5 21M21 14L13.5 7" stroke="white" stroke-width="2"></path>
+						</svg>
+					</div>
+				</button>
+			</div>
+			<li class="combinations__item">
+				<div class="combinations__tooltip tooltip">
+					<div class="tooltip__inner"></div>
+				</div>
+				<img src="./images/combinations/green.jpg" alt="green yarn" width="384" height="336" loading="lazy">
+			</li>
+			<li class="combinations__item">
+				<div class="combinations__tooltip tooltip">
+					<div class="tooltip__inner"></div>
+				</div>
+				<img src="./images/combinations/yellow.jpg" alt="yellow yarn" width="384" height="336" loading="lazy">
+			</li>
+			<li class="combinations__item">
+				<div class="combinations__tooltip tooltip">
+					<div class="tooltip__inner"></div>
+				</div>
+				<img src="./images/combinations/blue.jpg" alt="blue yarn" width="384" height="336" loading="lazy">
+			</li>
+			<li class="combinations__item">
+				<div class="combinations__tooltip tooltip">
+					<div class="tooltip__inner"></div>
+				</div>
+				<img src="./images/combinations/orange.jpg" alt="orange yarn" width="384" height="336" loading="lazy">
+			</li>
+			<li class="combinations__item">
+				<div class="combinations__tooltip tooltip">
+					<div class="tooltip__inner"></div>
+				</div>
+				<img src="./images/combinations/white.jpg" alt="white yarn" width="384" height="336" loading="lazy">
+			</li>
+		</ul>
+	</section>
+
 	<style>
-		.intro {
+		.header,
+		.intro,
+		.slider,
+		.categories {
 			display: none;
 		}
 	</style>
 
-	<section class="intro container">
-		<h1 class="intro__title">
-			<span class="intro__line">Yarns</span>
-			<span class="intro__line">Patterns</span>
-			<span class="intro__line">Hooks & Needles</span>
-			<span class="intro__line">And more</span>
-		</h1>
-		<button class="intro__button button button--accent">SHOP NOW</button>
-		<img class="intro__image" src="./images/intro/intro-image.webp" alt="" width="690" height="570" loading="lazy">
-	</section>
-
-	<div class="visually-hidden">Icons made from <a href="https://www.onlinewebfonts.com/icon">svg icons</a>is licensed by
-		CC BY 4.0</div>
-
 	<script src="script.js"></script>
+	<script src="slider.js"></script>
 </body>
 
 </html>

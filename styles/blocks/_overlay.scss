@@ -6,13 +6,15 @@
 	height: 100vh;
 	background-color: var(--color-accent-secondary);
 	padding: 20px;
-	z-index: 1;
+	z-index: 3;
+	opacity: 1;
 	@include flex-center;
 	@include transition;
 
 
 	&--inactive {
-		right: -9999px;
+		right: -100%;
+		opacity: 0;
 	}
 
 	&__list {

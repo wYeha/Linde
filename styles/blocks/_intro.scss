@@ -1,34 +1,108 @@
 .intro {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: flex-start;
-	position: relative;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: var(--grid-gap-large);
 
 	&__title {
 		display: flex;
 		flex-direction: column;
-		row-gap: 24px;
+		row-gap: 20px;
 		font-weight: 300;
-		font-size: 78px;
+		color: var(--color-dark-alt);
 		text-transform: uppercase;
-		letter-spacing: 0.02em;
 		line-height: 54px;
-		padding-top: 104px;
-		padding-bottom: 135px;
-		transform: translateX(-7px);
+		letter-spacing: 0.02em;
+		@include fluid-text(74, 40);
 
-		@include fluid-text(78, 52)
+		@include tablet {
+			line-height: 1.2;
+			row-gap: 10px;
+		}
+
+		@include mobile {
+			line-height: 1;
+		}
 	}
 
 	&__button {
 		padding-inline: 30px;
+
+		@include tablet {
+			padding-inline: 24px;
+		}
 	}
 
-	&__image {
-		position: absolute;
-		height: 567px;
-		right: 0;
-		top: 0;
+	&__line {}
+
+	&__inner {
+		height: 455px;
+		padding: 50px 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		width: 100%;
+
+		@include tablet {
+			padding: 30px 10px;
+			height: 400px;
+		}
+
+		@include mobile {
+			height: 320px;
+		}
+
+		&--left {
+			grid-column: span 4;
+			background-image: url('../images/intro/intro-image.jpg');
+			background-position: right;
+		}
+
+		&--right {
+			grid-column: span 2;
+			background-image: url('../images/intro/intro-image-show.jpg');
+			background-position: center;
+			background-size: cover;
+			position: relative;
+			z-index: 2;
+
+			&::after {
+				position: absolute;
+				content: '';
+				inset: 0;
+				background-color: var(--color-accent-transparent);
+				z-index: 1;
+			}
+
+			@include mobile {
+				height: auto;
+				flex-direction: row;
+				align-items: flex-end;
+			}
+		}
+
+		&--left,
+		&--right {
+			@include mobile {
+				grid-column: span 6;
+			}
+		}
+	}
+
+	&__subtitle {
+		z-index: 2;
+		line-height: 94%;
+		font-weight: 300;
+		color: var(--color-white);
+		@include fluid-text(30, 24);
+
+		@include mobile {
+			max-width: 220px;
+		}
+	}
+
+	&__button-view {
+		z-index: 2;
+		padding-inline: 16px 6px;
 	}
 }

@@ -1,3 +1,7 @@
+html {
+	overflow-x: hidden;
+}
+
 body>* {
 	font-family: var(--font-family-primary);
 }
@@ -10,6 +14,7 @@ body {
 h2 {
 	font-family: var(--font-family-secondary);
 	font-size: 43px;
+	font-weight: 400;
 }
 
 a,
