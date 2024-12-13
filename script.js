@@ -56,53 +56,44 @@ changeParent()
 window.addEventListener('resize', changeParent)
 
 
-//////////////////////////////////////////////////////
-
-function getTooltipCoordinates(element) {
-	const rect = element.getBoundingClientRect();
-	const parentRect = element.closest('section').getBoundingClientRect();
-
-	return {
-		left: rect.left - parentRect.left,
-		top: rect.top - parentRect.top,
-		width: rect.width,
-		height: rect.height
-	};
-}
+// Отображение тултипов
 
 const tooltipInnerArray = document.querySelectorAll('.tooltip__inner');
 const tooltipArray = document.querySelectorAll('.tooltip');
 const visuallyHiddenClass = 'visually-hidden'
 
+
 tooltipArray.forEach((element, index) => {
-	element.addEventListener('mouseover', () => {
-		const tooltipModal = element.querySelector('.tooltip__inner')
-		closeAllTooltips(tooltipInnerArray)
-		openTooltip(tooltipModal)
+	element.addEventListener('click', () => {
+		const tooltipInner = element.querySelector('.tooltip__inner')
+		if (tooltipInner.classList.contains(visuallyHiddenClass)) {
+			closeAllTooltips(tooltipInnerArray)
+			element.classList.add('tooltip--active')
+			openTooltip(tooltipInner)
+
+		} else {
+			element.classList.remove('tooltip--active')
+			closeTooltip(tooltipInner)
+		}
 	})
 });
 
 function openTooltip(element) {
-	if (element.classList.contains(visuallyHiddenClass)) {
-		tooltipInnerArray.forEach(element => {
-			const coordinates = getTooltipCoordinates(element)
+	element.classList.remove(visuallyHiddenClass)
+}
 
-			if (coordinates.left < 20) {
-				element.style.left = `${0}%`
-				element.style.setProperty('--left', '10px')
-			}
-		})
-		element.classList.remove(visuallyHiddenClass)
-	}
+function closeTooltip(element) {
+	element.classList.add(visuallyHiddenClass)
 }
 
 function closeAllTooltips(array) {
 	array.forEach(element => {
 		element.classList.add(visuallyHiddenClass)
+		tooltipArray.forEach(element => {
+			element.classList.remove('tooltip--active')
+		});
 	})
 }
-
-closeAllTooltips(tooltipInnerArray)
 
 
 

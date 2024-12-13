@@ -11,16 +11,16 @@
 			gap: 16px;
 			overflow-x: scroll;
 			overflow-y: hidden;
-			scroll-snap-type: x mandatory;
+			// scroll-snap-type: x mandatory;
 			margin-inline: calc(var(--container-padding-x) * -1);
 			padding-inline: var(--container-padding-x);
-			padding-block-start: 20px;
+			padding-block: 20px;
 		}
 	}
 
 	&__item {
 		position: relative;
-		scroll-snap-align: center;
+		// scroll-snap-align: center;
 
 		& img {
 			object-fit: cover;

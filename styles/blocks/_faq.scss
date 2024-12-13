@@ -1,0 +1,43 @@
+.faq {
+	display: flex;
+	gap: 35px;
+
+	&__info {
+		max-width: 375px;
+		width: 100%;
+	}
+
+	&__title {
+		line-height: 0.6;
+		padding-block-end: 30px;
+	}
+
+	&__text {
+		p {
+			color: var(--color-dark);
+			max-width: 320px;
+		}
+
+		padding-block-end: 50px;
+	}
+
+	&__button {
+		text-transform: uppercase;
+		background-color: var(--color-grey-bright);
+		font-weight: 400;
+		padding-inline-start: 16px;
+		padding-inline-end: 6px;
+
+		@include hover {
+			background-color: var(--color-accent-primary);
+			border-color: var(--color-grey-bright);
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		width: 100%;
+	}
+}
